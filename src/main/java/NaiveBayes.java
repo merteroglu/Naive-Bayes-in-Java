@@ -4,6 +4,8 @@ import zemberek.normalization.TurkishSpellChecker;
 import java.io.IOException;
 
 public class NaiveBayes {
+
+
     public static void main(String[] args) {
         try {
             TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
@@ -14,7 +16,7 @@ public class NaiveBayes {
             for (String s : toSuggest) {
                 System.out.println(s + " -> " + spellChecker.suggestForWord(s));
             }
-            
+
         }catch (IOException e){
 
         }
