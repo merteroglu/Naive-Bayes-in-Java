@@ -1,9 +1,11 @@
+import zemberek.morphology.analysis.WordAnalysis;
 import zemberek.morphology.analysis.tr.TurkishMorphology;
 import zemberek.normalization.TurkishSpellChecker;
 
 import java.io.IOException;
+import java.util.List;
 
-public class NaiveBayes {
+public class Main {
 
 
     public static void main(String[] args) {
@@ -11,11 +13,11 @@ public class NaiveBayes {
             TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
             TurkishSpellChecker spellChecker = new TurkishSpellChecker(morphology);
 
-            System.out.println("Give suggestions.");
-            String[] toSuggest = {"Kraamanda", "okumuştk", "yapbileceksen", "oukyamıyorum"};
-            for (String s : toSuggest) {
-                System.out.println(s + " -> " + spellChecker.suggestForWord(s));
-            }
+            String[] toSuggest = {"sporcuların", "kitaplar", "yapbileceksen", "okuyorum"};
+            String wordm = spellChecker.suggestForWord("nesela").get(0);
+            List<WordAnalysis> wordAnalysisList = morphology.analyze(wordm);
+            System.out.println(wordAnalysisList.get(0).getStems().get(0));
+
 
         }catch (IOException e){
 

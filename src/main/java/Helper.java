@@ -1,63 +1,48 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Helper {
 
-    public File[] getLearningFilesList(int type){
-        String path = "/Users/mert/documents/1150haber/";
+    public enum DataType{
+        learning,
+        testing
+    }
 
-        switch (type){
+    private String getPathName(int type){
+        String pathName = "";
+        switch (type) {
             case 0:
-                path += "ekonomi/";
+                pathName = "ekonomi/";
                 break;
             case 1:
-                path += "magazin/";
+                pathName = "magazin/";
                 break;
             case 2:
-                path += "saglik/";
+                pathName = "saglik/";
                 break;
             case 3:
-                path += "siyasi/";
+                pathName = "siyasi/";
                 break;
             case 4:
-                path += "spor/";
+                pathName = "spor/";
                 break;
         }
+        return pathName;
+    }
 
-        path += "learning/";
+    private File[] getFilesList(int type, DataType dataType){
+        String path = "/Users/mert/documents/1150haber/";
+        path += getPathName(type);
+        path += dataType + "/";
         File folder = new File(path);
         return folder.listFiles();
     }
 
-    public File[] getTestingFilesList(int type){
-        String path = "/Users/mert/documents/1150haber/";
-
-        switch (type){
-            case 0:
-                path += "ekonomi/";
-                break;
-            case 1:
-                path += "magazin/";
-                break;
-            case 2:
-                path += "saglik/";
-                break;
-            case 3:
-                path += "siyasi/";
-                break;
-            case 4:
-                path += "spor/";
-                break;
-        }
-
-        path += "testing/";
-        File folder = new File(path);
-        return folder.listFiles();
-    }
-
-    public String[] getFilesWords(File file){
+    private String[] getFilesWords(File file){
         String lines = "";
         try {
             FileReader fileReader = new FileReader(file);
@@ -72,4 +57,14 @@ public class Helper {
         }
         return lines.split("\\s+");
     }
+
+    public List<String[]> getAllFilesWords(int topicType , DataType dataType){
+        List<String[]> stringList = new ArrayList<String[]>();
+        File[] files = getFilesList(topicType,dataType);
+        for(File f : files){
+            stringList.add(getFilesWords(f));
+        }
+        return stringList;
+    }
+
 }

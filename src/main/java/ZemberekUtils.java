@@ -29,4 +29,21 @@ public class ZemberekUtils {
         return (String[]) stringList.toArray();
     }
 
+    public String[] getStems(String[] words){
+        List<String> stringList = new ArrayList<String>();
+        for(String s : words){
+            try{
+                stringList.add(turkishMorphology.analyze(s).get(0).getStems().get(0));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return (String[]) stringList.toArray();
+    }
+
+    public String[] preProcess(String[] words){
+        String[] normalized = normalization(words);
+        return getStems(normalized);
+    }
+
 }
