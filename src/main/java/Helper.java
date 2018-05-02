@@ -51,7 +51,6 @@ public class Helper {
             while((currentLine = bufferedReader.readLine()) != null){
                 lines += currentLine; // TODO new line karakteri gerekebilir
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
