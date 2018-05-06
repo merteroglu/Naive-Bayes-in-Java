@@ -17,7 +17,7 @@ public class ZemberekUtils {
         }
     }
 
-    public String[] normalization(String[] words){
+    private String[] normalization(String[] words){
         List<String> stringList = new ArrayList<String>();
         for (String s : words){
             try {
@@ -29,7 +29,7 @@ public class ZemberekUtils {
         return (String[]) stringList.toArray();
     }
 
-    public String[] getStems(String[] words){
+    private String[] getStems(String[] words){
         List<String> stringList = new ArrayList<String>();
         for(String s : words){
             try{

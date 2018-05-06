@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -57,11 +58,21 @@ public class Helper {
         return lines.split("\\s+");
     }
 
+    private String[] removeStopWords(String[] words){
+        List<String> list = Arrays.asList(words);
+        for(String s : list){
+            if(StaticValues.stopWords.contains(s)){
+                list.remove(s);
+            }
+        }
+        return (String[]) list.toArray();
+    }
+
     public List<String[]> getAllFilesWords(int topicType , DataType dataType){
         List<String[]> stringList = new ArrayList<String[]>();
         File[] files = getFilesList(topicType,dataType);
         for(File f : files){
-            stringList.add(getFilesWords(f));
+            stringList.add(removeStopWords(getFilesWords(f)));
         }
         return stringList;
     }
