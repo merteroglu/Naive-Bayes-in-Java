@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -11,6 +12,36 @@ public class Helper {
     public enum DataType{
         learning,
         testing
+    }
+
+    public void splitFilesRandomly(int topicType){
+        String path = "/Users/mert/documents/1150haber/";
+        path += getPathName(topicType) + "/";
+        String learningPath = path + "learning/";
+        String testingPath = path + "testing/";
+
+        File folder = new File(path);
+        File learningFolder = new File(learningPath);
+        File testingFolder = new File(testingPath);
+        File[] files = folder.listFiles();
+        List<File> fileList = Arrays.asList(files);
+        Collections.shuffle(fileList);
+        int sizePercent75 = (fileList.size() * 75) / 100;
+        int i;
+        if(!learningFolder.exists()){
+            learningFolder.mkdirs();
+        }
+        if(!testingFolder.exists()){
+            testingFolder.mkdirs();
+        }
+        for (i = 0; i < sizePercent75+1; i++) {
+            fileList.get(i).renameTo(new File(learningFolder + "/" + fileList.get(i).getName()));
+        }
+
+        for(;i<fileList.size();i++){
+            fileList.get(i).renameTo(new File(testingFolder + "/" + fileList.get(i).getName()));
+        }
+
     }
 
     private String getPathName(int type){
