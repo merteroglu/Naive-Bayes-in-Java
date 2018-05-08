@@ -1,9 +1,22 @@
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Helper helper = new Helper();
-        helper.splitFilesRandomly(0);
+        NGrams nGrams = new NGrams();
+        String[] arry1 = new String[]{"mert","mert","eroglu","dededede"};
+        String[] arry2 = new String[]{"test","deneme","kou","mert","mememe"};
+        String[] arry3 = new String[]{"telefon","bilgisayar","java","dene","oglu"};
+        List<String[]> list = new ArrayList<String[]>();
+        list.add(arry1);
+        list.add(arry2);
+        list.add(arry3);
+        Hashtable<String,Integer> tableNGram = nGrams.getNGram(2,list);
+
+        nGrams.removeLessThan50(2);
+
     }
 
 }

@@ -1,10 +1,19 @@
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class NGrams {
 
+    Hashtable<String,Integer> table2Gram;
+    Hashtable<String,Integer> table3Gram;
+
+
+    public NGrams() {
+        table2Gram = new Hashtable<String, Integer>();
+        table3Gram = new Hashtable<String, Integer>();
+    }
+
     public Hashtable<String,Integer> getNGram(int size , List<String[]> wordList){
-        Hashtable<String,Integer> tableNGram = new Hashtable<String, Integer>();
+        Hashtable<String,Integer> tableNGram;
+        if(size == 2) tableNGram = table2Gram; else tableNGram = table3Gram;
 
         for(String[] arr : wordList){
             for(String str : arr){
@@ -22,4 +31,25 @@ public class NGrams {
         return tableNGram;
     }
 
+    public void removeLessThan50(int size){
+        Hashtable<String,Integer> tableNGram;
+        if(size == 2) tableNGram = table2Gram; else tableNGram = table3Gram;
+
+        Iterator<Map.Entry<String, Integer>> iterator = tableNGram.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<String, Integer> entry = iterator.next();
+            if(entry.getValue() < 50){
+                iterator.remove();
+            }
+        }
+
+    }
+
+    public Hashtable<String, Integer> getTable2Gram() {
+        return table2Gram;
+    }
+
+    public Hashtable<String, Integer> getTable3Gram() {
+        return table3Gram;
+    }
 }
