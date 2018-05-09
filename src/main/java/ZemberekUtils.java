@@ -18,7 +18,7 @@ public class ZemberekUtils {
     }
 
     private String[] normalization(String[] words){
-        List<String> stringList = new ArrayList<String>();
+        ArrayList<String> stringList = new ArrayList<String>();
         for (String s : words){
             try {
                 stringList.add(turkishSpellChecker.suggestForWord(s).get(0));
@@ -26,7 +26,8 @@ public class ZemberekUtils {
                 e.printStackTrace();
             }
         }
-        return (String[]) stringList.toArray();
+
+        return  stringList.toArray(new String[0]);
     }
 
     private String[] getStems(String[] words){
@@ -38,7 +39,7 @@ public class ZemberekUtils {
                 e.printStackTrace();
             }
         }
-        return (String[]) stringList.toArray();
+        return stringList.toArray(new String[0]);
     }
 
     public String[] preProcess(String[] words){
