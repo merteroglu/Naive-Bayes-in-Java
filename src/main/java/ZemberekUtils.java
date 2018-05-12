@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ZemberekUtils {
-    TurkishMorphology turkishMorphology;
-    TurkishSpellChecker turkishSpellChecker;
+    private TurkishMorphology turkishMorphology;
+    private TurkishSpellChecker turkishSpellChecker;
 
     public ZemberekUtils() {
         try{
@@ -23,7 +23,7 @@ public class ZemberekUtils {
             try {
                 stringList.add(turkishSpellChecker.suggestForWord(s).get(0));
             }catch (Exception e){
-                e.printStackTrace();
+
             }
         }
 
@@ -36,7 +36,7 @@ public class ZemberekUtils {
             try{
                 stringList.add(turkishMorphology.analyze(s).get(0).getStems().get(0));
             }catch (Exception e){
-                e.printStackTrace();
+
             }
         }
         return stringList.toArray(new String[0]);

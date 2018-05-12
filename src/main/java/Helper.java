@@ -1,10 +1,5 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 
 public class Helper {
@@ -14,9 +9,9 @@ public class Helper {
         testing
     }
 
-    public void splitFilesRandomly(int topicType){
+    private void splitFilesRandomly(int topicType){
         String path = "/Users/mert/documents/1150haber/";
-        path += getPathName(topicType) + "/";
+        path += getPathName(topicType);
         String learningPath = path + "learning/";
         String testingPath = path + "testing/";
 
@@ -66,6 +61,22 @@ public class Helper {
         return pathName;
     }
 
+    private String getTopicName(int type){
+        switch (type) {
+            case 0:
+                return "ekonomi/";
+            case 1:
+                return "magazin/";
+            case 2:
+                return "saglik/";
+            case 3:
+                return "siyasi/";
+            case 4:
+                return "spor/";
+        }
+        return "notopic";
+    }
+
     private File[] getFilesList(int type, DataType dataType){
         String path = "/Users/mert/documents/1150haber/";
         path += getPathName(type);
@@ -78,7 +89,8 @@ public class Helper {
         String lines = "";
         try {
             FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            //BufferedReader bufferedReader = new BufferedReader(fileReader);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"ISO-8859-9"));
             String currentLine;
             while((currentLine = bufferedReader.readLine()) != null){
                 lines += currentLine; // TODO new line karakteri gerekebilir
@@ -86,26 +98,60 @@ public class Helper {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return lines.split("\\s+");
+        return lines.replaceAll("[^a-zA-Z öçşığüÖÇŞİĞÜ]","").toLowerCase().split("\\s+");
     }
 
     private String[] removeStopWords(String[] words){
-        List<String> list = Arrays.asList(words);
-        for(String s : list){
-            if(StaticValues.stopWords.contains(s)){
-                list.remove(s);
+        List<String> list = new LinkedList<String>(Arrays.asList(words));
+
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()){
+            String str = iterator.next();
+            if(StaticValues.stopWords.contains(str)){
+                iterator.remove();
             }
         }
-        return (String[]) list.toArray();
+        return list.toArray(new String[0]);
     }
 
-    public List<String[]> getAllFilesWords(int topicType , DataType dataType){
-        List<String[]> stringList = new ArrayList<String[]>();
-        File[] files = getFilesList(topicType,dataType);
-        for(File f : files){
-            stringList.add(removeStopWords(getFilesWords(f)));
+    private String mergedWords(String[] words){
+        String mergedString = "";
+        for(String word : words){
+            mergedString += word + " ";
         }
-        return stringList;
+        return mergedString;
+    }
+
+
+    public List<DocFile> getAllDocFiles(){
+        List<DocFile> docFiles = new ArrayList<>();
+        ZemberekUtils zemberekUtils = new ZemberekUtils();
+
+        for (int i = 0; i < 5; i++) { // topics
+            splitFilesRandomly(i);
+            File[] filesLearning = getFilesList(i,DataType.learning);
+            File[] filesTesting = getFilesList(i,DataType.testing);
+
+            for(File f : filesLearning){
+                String[] wordsInF = getFilesWords(f);
+                wordsInF = removeStopWords(wordsInF);
+                wordsInF = zemberekUtils.preProcess(wordsInF); // normalized and stems
+                String mergedWordsInF = mergedWords(wordsInF);
+                DocFile docFile = new DocFile(f.getName(),getTopicName(i),mergedWordsInF,true);
+                docFiles.add(docFile);
+            }
+
+            for(File f : filesTesting){
+                String[] wordsInF = getFilesWords(f);
+                wordsInF = removeStopWords(wordsInF);
+                wordsInF = zemberekUtils.preProcess(wordsInF); // normalized and stems
+                String mergedWordsInF = mergedWords(wordsInF);
+                DocFile docFile = new DocFile(f.getName(),getTopicName(i),mergedWordsInF,false);
+                docFiles.add(docFile);
+            }
+
+        }
+        return docFiles;
     }
 
 }
