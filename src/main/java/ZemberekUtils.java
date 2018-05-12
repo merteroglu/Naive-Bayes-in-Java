@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ZemberekUtils {
     private TurkishMorphology turkishMorphology;
-    private TurkishSpellChecker turkishSpellChecker;
+    public TurkishSpellChecker turkishSpellChecker;
 
     public ZemberekUtils() {
         try{
@@ -21,7 +21,10 @@ public class ZemberekUtils {
         ArrayList<String> stringList = new ArrayList<String>();
         for (String s : words){
             try {
-                stringList.add(turkishSpellChecker.suggestForWord(s).get(0));
+                if(!turkishSpellChecker.check(s)) // yazım yanlışı varsa
+                    stringList.add(turkishSpellChecker.suggestForWord(s).get(0));
+                else
+                    stringList.add(s);
             }catch (Exception e){
 
             }
