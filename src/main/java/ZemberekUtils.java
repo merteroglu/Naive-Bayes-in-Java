@@ -29,7 +29,6 @@ public class ZemberekUtils {
 
             }
         }
-
         return  stringList.toArray(new String[0]);
     }
 

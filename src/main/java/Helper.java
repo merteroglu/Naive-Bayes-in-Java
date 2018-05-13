@@ -64,15 +64,15 @@ public class Helper {
     private String getTopicName(int type){
         switch (type) {
             case 0:
-                return "ekonomi/";
+                return "ekonomi";
             case 1:
-                return "magazin/";
+                return "magazin";
             case 2:
-                return "saglik/";
+                return "saglik";
             case 3:
-                return "siyasi/";
+                return "siyasi";
             case 4:
-                return "spor/";
+                return "spor";
         }
         return "notopic";
     }
