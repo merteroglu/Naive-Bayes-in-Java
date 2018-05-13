@@ -1,8 +1,6 @@
 package Bayes;
 
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
 public class Classifier {
 
@@ -54,6 +52,10 @@ public class Classifier {
         return (count == null) ? 0 : count.intValue();
     }
 
+    public Set<String> getCategories() {
+        return ((Hashtable<String, Integer>) this.totalCategoryCount).keySet();
+    }
+
     public int getCategoryCount(String category) {
         Integer count = this.totalCategoryCount.get(category);
         return (count == null) ? 0 : count.intValue();
@@ -87,6 +89,48 @@ public class Classifier {
         }
         this.incrementCategory(category);
     }
+
+    private float featuresProbabilityProduct(Collection<String> features, String category) {
+        float product = 1.0f;
+        for (String feature : features)
+            product *= this.featureWeighedAverage(feature, category);
+        return product;
+    }
+
+    private float categoryProbability(Collection<String> features, String category) {
+        return ((float) this.getCategoryCount(category) / (float) this.getCategoriesTotal())
+                * featuresProbabilityProduct(features, category);
+    }
+
+    private SortedSet<Classification> categoryProbabilities(Collection<String> features) {
+
+        SortedSet<Classification> probabilities =
+                new TreeSet<Classification>(
+                        new Comparator<Classification>() {
+
+                            public int compare(Classification o1, Classification o2) {
+                                int toReturn = Float.compare(o1.getProbability(), o2.getProbability());
+                                if ((toReturn == 0) && !o1.getCategory().equals(o2.getCategory()))
+                                    toReturn = -1;
+                                return toReturn;
+                            }
+                        });
+
+        for (String category : this.getCategories())
+            probabilities.add(new Classification(category, this.categoryProbability(features, category)));
+        return probabilities;
+    }
+
+    public Classification classify(Hashtable<String,Integer> features) {
+        SortedSet<Classification> probabilites = this.categoryProbabilities(features.keySet());
+
+        if (probabilites.size() > 0) {
+            return probabilites.last();
+        }
+        return null;
+    }
+
+
 
 
 }
