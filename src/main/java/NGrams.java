@@ -37,7 +37,7 @@ public class NGrams {
         Iterator<Map.Entry<String, Integer>> iterator = tableNGram.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, Integer> entry = iterator.next();
-            if(entry.getValue() < 20){
+            if(entry.getValue() < 50){
                 iterator.remove();
             }
         }

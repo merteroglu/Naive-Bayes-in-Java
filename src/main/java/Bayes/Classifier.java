@@ -22,13 +22,27 @@ public class Classifier {
         return toReturn;
     }
 
-    public void incrementFeature(String feature, Integer value){
-        Integer count = this.totalFeatureCount.get(feature);
-        if(count == null){
-            this.totalFeatureCount.put(feature,value.intValue());
-        }else{
-            this.totalFeatureCount.put(feature,count.intValue() + value.intValue());
+    public void incrementFeature(String feature,String category){
+        Dictionary<String, Integer> features = this.featureCountPerCategory.get(category);
+        if (features == null) {
+            this.featureCountPerCategory.put(category, new Hashtable<>());
+            features = this.featureCountPerCategory.get(category);
         }
+
+        Integer count = features.get(feature);
+        if (count == null) {
+            features.put(feature, 0);
+            count = features.get(feature);
+        }
+
+        features.put(feature, ++count);
+
+        Integer totalCount = this.totalFeatureCount.get(feature);
+        if (totalCount == null) {
+            this.totalFeatureCount.put(feature, 0);
+            totalCount = this.totalFeatureCount.get(feature);
+        }
+        this.totalFeatureCount.put(feature, ++totalCount);
     }
 
     public void incrementCategory(String category) {
@@ -85,7 +99,7 @@ public class Classifier {
 
     public void learn(String category, Hashtable<String,Integer> features) {
         for (String feature : features.keySet()){
-            incrementFeature(feature,features.get(feature).intValue());
+            incrementFeature(feature,category);
         }
         this.incrementCategory(category);
     }
