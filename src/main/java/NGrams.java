@@ -2,8 +2,8 @@ import java.util.*;
 
 public class NGrams {
 
-    Hashtable<String,Integer> table2Gram;
-    Hashtable<String,Integer> table3Gram;
+    private Hashtable<String,Integer> table2Gram;
+    private Hashtable<String,Integer> table3Gram;
 
 
     public NGrams(String words) {
@@ -51,4 +51,12 @@ public class NGrams {
     public Hashtable<String, Integer> getTable3Gram() {
         return table3Gram;
     }
+
+    public Hashtable<String,Integer> getTableNGrams(){
+        Hashtable<String,Integer> tableMerged = new Hashtable<>();
+        tableMerged.putAll(table2Gram);
+        tableMerged.putAll(table3Gram);
+        return tableMerged;
+    }
+
 }
