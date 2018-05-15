@@ -11,8 +11,6 @@ public class NGrams {
         table3Gram = new Hashtable<String, Integer>();
         getNGram(2,words);
         getNGram(3,words);
-        //removeLessThan50(2);
-        //removeLessThan50(3);
     }
 
     public Hashtable<String,Integer> getNGram(int size , String words){
@@ -30,14 +28,14 @@ public class NGrams {
         return tableNGram;
     }
 
-    public void removeLessThan50(int size){
+    public void removeLessThan(int size,int value){
         Hashtable<String,Integer> tableNGram;
         if(size == 2) tableNGram = table2Gram; else tableNGram = table3Gram;
 
         Iterator<Map.Entry<String, Integer>> iterator = tableNGram.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, Integer> entry = iterator.next();
-            if(entry.getValue() < 50){
+            if(entry.getValue() < value){
                 iterator.remove();
             }
         }

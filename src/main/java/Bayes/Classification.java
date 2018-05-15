@@ -4,9 +4,9 @@ public class Classification {
 
     private String category;
 
-    private float probability;
+    private double probability;
 
-    public Classification(String category,float probability) {
+    public Classification(String category,double probability) {
         this.category = category;
         this.probability = probability;
     }
@@ -15,7 +15,7 @@ public class Classification {
         return category;
     }
 
-    public float getProbability() {
+    public double getProbability() {
         return probability;
     }
 

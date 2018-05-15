@@ -133,26 +133,26 @@ public class Classifier {
         return (count == null) ? 0 : count.intValue();
     }
 
-    public float featureProbability(String feature, String category) {
-        final float totalFeatureCount = this.getFeatureCount(feature);
+    public double featureProbability(String feature, String category) {
+        final double totalFeatureCount = this.getFeatureCount(feature);
 
         if (totalFeatureCount == 0) {
             return 0;
         } else {
-            return this.getFeatureCount(feature, category) / (float) this.getFeatureCount(feature);
+            return this.getFeatureCount(feature, category) / (double) this.getFeatureCount(feature);
         }
     }
 
-    public float featureWeighedAverage(String feature, String category) {
+    public double featureWeighedAverage(String feature, String category) {
         return this.featureWeighedAverage(feature, category, 1.0f, 0.5f);
     }
 
-    public float featureWeighedAverage(String feature, String category, float weight, float assumedProbability) {
-        final float basicProbability = featureProbability(feature, category);
+    public double featureWeighedAverage(String feature, String category, double weight, double assumedProbability) {
+        final double basicProbability = featureProbability(feature, category);
 
         Integer totals = this.totalFeatureCount.get(feature);
         if (totals == null) totals = 0;
-        return (weight * assumedProbability + totals * basicProbability) / (weight + totals);
+        return ((weight * assumedProbability) + (totals * basicProbability)) / (weight + totals);
     }
 
     public void learn(String category, Hashtable<String,Integer> features) {
@@ -162,26 +162,29 @@ public class Classifier {
         this.incrementCategory(category);
     }
 
-    private float featuresProbabilityProduct(Collection<String> features, String category) {
-        float product = 1.0f;
-        for (String feature : features)
-            product *= this.featureWeighedAverage(feature, category);
+    private double featuresProbabilityProduct(Hashtable<String,Integer> features, String category) {
+        double product = 1.0f;
+        for (String feature : features.keySet()){
+            for (int i = 0; i < features.get(feature).intValue(); i++) {
+                product *= this.featureWeighedAverage(feature, category);
+            }
+        }
         return product;
     }
 
-    private float categoryProbability(Collection<String> features, String category) {
-        return ((float) this.getCategoryCount(category) / (float) this.getCategoriesTotal())
+    private double categoryProbability(Hashtable<String,Integer> features, String category) {
+        return ((double) this.getCategoryCount(category) / (double) this.getCategoriesTotal())
                 * featuresProbabilityProduct(features, category);
     }
 
-    private SortedSet<Classification> categoryProbabilities(Collection<String> features) {
+    private SortedSet<Classification> categoryProbabilities(Hashtable<String,Integer> features) {
 
         SortedSet<Classification> probabilities =
                 new TreeSet<Classification>(
                         new Comparator<Classification>() {
 
                             public int compare(Classification o1, Classification o2) {
-                                int toReturn = Float.compare(o1.getProbability(), o2.getProbability());
+                                int toReturn = Double.compare(o1.getProbability(), o2.getProbability());
                                 if ((toReturn == 0) && !o1.getCategory().equals(o2.getCategory()))
                                     toReturn = -1;
                                 return toReturn;
@@ -194,7 +197,7 @@ public class Classifier {
     }
 
     public Classification classify(Hashtable<String,Integer> features) {
-        SortedSet<Classification> probabilites = this.categoryProbabilities(features.keySet());
+        SortedSet<Classification> probabilites = this.categoryProbabilities(features);
 
         if (probabilites.size() > 0) {
             return probabilites.last();

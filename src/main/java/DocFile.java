@@ -11,6 +11,10 @@ public class DocFile {
         this.text = text;
         this.isLearning = isLearning;
         this.nGrams = new NGrams(this.text.replace(" ","_"));
+        if(!isLearning){
+            this.nGrams.removeLessThan(2,10);
+            this.nGrams.removeLessThan(3,10);
+        }
     }
 
     public String getName() {
