@@ -66,7 +66,7 @@ public class Statistics {
 
     public float getPrecision() {
         try{
-            precision = TP / (TP + FP);
+            precision = (float)TP / (float)(TP + FP);
         }catch (Exception e){
             precision = 0;
         }
@@ -75,7 +75,7 @@ public class Statistics {
 
     public float getRecall() {
         try {
-            recall = TP / (TP + FN);
+            recall = (float)TP / (float)(TP + FN);
         }catch (Exception e){
             recall = 0;
         }
