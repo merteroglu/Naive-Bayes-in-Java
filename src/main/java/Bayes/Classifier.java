@@ -64,49 +64,17 @@ public class Classifier {
             }
         }
 
-        Map<String, Integer> tableEkonomi = (Map<String, Integer>) featureCountPerCategory.get("ekonomi");
-        Map<String, Integer> tableMagazin = (Map<String, Integer>) featureCountPerCategory.get("magazin");
-        Map<String, Integer> tableSaglik = (Map<String, Integer>) featureCountPerCategory.get("saglik");
-        Map<String, Integer> tableSiyasi = (Map<String, Integer>) featureCountPerCategory.get("siyasi");
-        Map<String, Integer> tableSpor = (Map<String, Integer>) featureCountPerCategory.get("spor");
+        List<String> topicList = new ArrayList<String>();
+        topicList.add("ekonomi");topicList.add("magazin");topicList.add("saglik");topicList.add("siyasi");topicList.add("spor");
 
-        Iterator<Map.Entry<String, Integer>> iteratorEkonomi = tableEkonomi.entrySet().iterator();
-        while(iteratorEkonomi.hasNext()){
-            Map.Entry<String, Integer> entry = iteratorEkonomi.next();
-            if(entry.getValue() < 50){
-                iteratorEkonomi.remove();
-            }
-        }
-
-        Iterator<Map.Entry<String, Integer>> iteratorMagazin = tableMagazin.entrySet().iterator();
-        while(iteratorMagazin.hasNext()){
-            Map.Entry<String, Integer> entry = iteratorMagazin.next();
-            if(entry.getValue() < 50){
-                iteratorMagazin.remove();
-            }
-        }
-
-        Iterator<Map.Entry<String, Integer>> iteratorSaglik = tableSaglik.entrySet().iterator();
-        while(iteratorSaglik.hasNext()){
-            Map.Entry<String, Integer> entry = iteratorSaglik.next();
-            if(entry.getValue() < 50){
-                iteratorSaglik.remove();
-            }
-        }
-
-        Iterator<Map.Entry<String, Integer>> iteratorSiyasi = tableSiyasi.entrySet().iterator();
-        while(iteratorSiyasi.hasNext()){
-            Map.Entry<String, Integer> entry = iteratorSiyasi.next();
-            if(entry.getValue() < 50){
-                iteratorSiyasi.remove();
-            }
-        }
-
-        Iterator<Map.Entry<String, Integer>> iteratorSpor = tableSpor.entrySet().iterator();
-        while(iteratorSpor.hasNext()){
-            Map.Entry<String, Integer> entry = iteratorSpor.next();
-            if(entry.getValue() < 50){
-                iteratorSpor.remove();
+        for (String topic : topicList) {
+            Map<String, Integer> table2 = (Map<String, Integer>) featureCountPerCategory.get(topic);
+            Iterator<Map.Entry<String, Integer>> iterator2 = table2.entrySet().iterator();
+            while(iterator2.hasNext()){
+                Map.Entry<String, Integer> entry = iterator2.next();
+                if(entry.getValue() < 50){
+                    iterator2.remove();
+                }
             }
         }
 
@@ -144,10 +112,8 @@ public class Classifier {
     }
 
     public double featureWeighedAverage(String feature, String category) {
-        return this.featureWeighedAverage(feature, category, 1.0f, 0.5f);
-    }
-
-    public double featureWeighedAverage(String feature, String category, double weight, double assumedProbability) {
+        double weight = 1.0f;
+        double assumedProbability = 0.5f;
         final double basicProbability = featureProbability(feature, category);
 
         Integer totals = this.totalFeatureCount.get(feature);
