@@ -22,7 +22,7 @@ public class Classifier {
         return toReturn;
     }
 
-    public void incrementFeature(String feature,String category){
+    public void incrementFeature(String feature,String category,int value){
         Dictionary<String, Integer> features = this.featureCountPerCategory.get(category);
         if (features == null) {
             this.featureCountPerCategory.put(category, new Hashtable<>());
@@ -31,18 +31,18 @@ public class Classifier {
 
         Integer count = features.get(feature);
         if (count == null) {
-            features.put(feature, 0);
+            features.put(feature, value);
             count = features.get(feature);
         }
 
-        features.put(feature, ++count);
+        features.put(feature, count.intValue() + value);
 
         Integer totalCount = this.totalFeatureCount.get(feature);
         if (totalCount == null) {
-            this.totalFeatureCount.put(feature, 0);
+            this.totalFeatureCount.put(feature, value);
             totalCount = this.totalFeatureCount.get(feature);
         }
-        this.totalFeatureCount.put(feature, ++totalCount);
+        this.totalFeatureCount.put(feature, totalCount.intValue() + value);
     }
 
     public void incrementCategory(String category) {
@@ -52,6 +52,64 @@ public class Classifier {
             count = this.totalCategoryCount.get(category);
         }
         this.totalCategoryCount.put(category, ++count);
+    }
+
+    public void removeLessThan50(){
+        Map<String, Integer> table = (Map<String, Integer>) totalFeatureCount;
+        Iterator<Map.Entry<String, Integer>> iterator = table.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<String, Integer> entry = iterator.next();
+            if(entry.getValue() < 50){
+                iterator.remove();
+            }
+        }
+
+        Map<String, Integer> tableEkonomi = (Map<String, Integer>) featureCountPerCategory.get("ekonomi");
+        Map<String, Integer> tableMagazin = (Map<String, Integer>) featureCountPerCategory.get("magazin");
+        Map<String, Integer> tableSaglik = (Map<String, Integer>) featureCountPerCategory.get("saglik");
+        Map<String, Integer> tableSiyasi = (Map<String, Integer>) featureCountPerCategory.get("siyasi");
+        Map<String, Integer> tableSpor = (Map<String, Integer>) featureCountPerCategory.get("spor");
+
+        Iterator<Map.Entry<String, Integer>> iteratorEkonomi = tableEkonomi.entrySet().iterator();
+        while(iteratorEkonomi.hasNext()){
+            Map.Entry<String, Integer> entry = iteratorEkonomi.next();
+            if(entry.getValue() < 50){
+                iteratorEkonomi.remove();
+            }
+        }
+
+        Iterator<Map.Entry<String, Integer>> iteratorMagazin = tableMagazin.entrySet().iterator();
+        while(iteratorMagazin.hasNext()){
+            Map.Entry<String, Integer> entry = iteratorMagazin.next();
+            if(entry.getValue() < 50){
+                iteratorMagazin.remove();
+            }
+        }
+
+        Iterator<Map.Entry<String, Integer>> iteratorSaglik = tableSaglik.entrySet().iterator();
+        while(iteratorSaglik.hasNext()){
+            Map.Entry<String, Integer> entry = iteratorSaglik.next();
+            if(entry.getValue() < 50){
+                iteratorSaglik.remove();
+            }
+        }
+
+        Iterator<Map.Entry<String, Integer>> iteratorSiyasi = tableSiyasi.entrySet().iterator();
+        while(iteratorSiyasi.hasNext()){
+            Map.Entry<String, Integer> entry = iteratorSiyasi.next();
+            if(entry.getValue() < 50){
+                iteratorSiyasi.remove();
+            }
+        }
+
+        Iterator<Map.Entry<String, Integer>> iteratorSpor = tableSpor.entrySet().iterator();
+        while(iteratorSpor.hasNext()){
+            Map.Entry<String, Integer> entry = iteratorSpor.next();
+            if(entry.getValue() < 50){
+                iteratorSpor.remove();
+            }
+        }
+
     }
 
     public int getFeatureCount(String feature, String category) {
@@ -99,7 +157,7 @@ public class Classifier {
 
     public void learn(String category, Hashtable<String,Integer> features) {
         for (String feature : features.keySet()){
-            incrementFeature(feature,category);
+            incrementFeature(feature,category,features.get(feature).intValue());
         }
         this.incrementCategory(category);
     }

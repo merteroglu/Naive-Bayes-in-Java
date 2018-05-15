@@ -11,8 +11,8 @@ public class NGrams {
         table3Gram = new Hashtable<String, Integer>();
         getNGram(2,words);
         getNGram(3,words);
-        removeLessThan50(2);
-        removeLessThan50(3);
+        //removeLessThan50(2);
+        //removeLessThan50(3);
     }
 
     public Hashtable<String,Integer> getNGram(int size , String words){

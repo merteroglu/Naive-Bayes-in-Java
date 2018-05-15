@@ -27,6 +27,7 @@ public class Main {
         statistics.put("siyasi",new Hashtable<>());
         statistics.put("spor",new Hashtable<>());
 
+        bayes.removeLessThan50();
 
         for(DocFile file : docFiles){
             if(!file.isLearning()){
