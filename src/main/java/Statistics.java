@@ -70,6 +70,9 @@ public class Statistics {
         }catch (Exception e){
             precision = 0;
         }
+        if(Double.isNaN(precision)){
+            precision = 0;
+        }
         return precision;
     }
 
@@ -77,6 +80,9 @@ public class Statistics {
         try {
             recall = (float)TP / (float)(TP + FN);
         }catch (Exception e){
+            recall = 0;
+        }
+        if(Double.isNaN(recall)){
             recall = 0;
         }
         return recall;
@@ -88,6 +94,9 @@ public class Statistics {
         try{
             Fmeasure = (2 * r * p) / (p + r);
         }catch (Exception e){
+            Fmeasure = 0;
+        }
+        if(Double.isNaN(Fmeasure)){
             Fmeasure = 0;
         }
         return Fmeasure;

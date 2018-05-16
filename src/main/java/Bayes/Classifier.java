@@ -132,7 +132,7 @@ public class Classifier {
         double product = 1.0f;
         for (String feature : features.keySet()){
             for (int i = 0; i < features.get(feature).intValue(); i++) {
-                product *= this.featureWeighedAverage(feature, category);
+                product += Math.log( this.featureWeighedAverage(feature, category));
             }
         }
         return product;
@@ -170,8 +170,5 @@ public class Classifier {
         }
         return null;
     }
-
-
-
 
 }

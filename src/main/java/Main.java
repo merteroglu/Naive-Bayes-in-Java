@@ -55,8 +55,6 @@ public class Main {
             }
         }
 
-
-
         Statistics ekonomi = new Statistics();
         ekonomi.setTP(statistics.get("ekonomi").get("ekonomi").intValue());
         ekonomi.setTN(statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
@@ -92,11 +90,6 @@ public class Main {
         spor.setFN(statistics.get("spor").get("ekonomi").intValue() + statistics.get("spor").get("magazin").intValue() + statistics.get("spor").get("saglik").intValue() + statistics.get("spor").get("siyasi").intValue());
         System.out.println("Spor " + spor.toString());
 
-
-
-
     }
-
-
 
 }
