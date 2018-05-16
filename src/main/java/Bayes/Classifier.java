@@ -163,10 +163,10 @@ public class Classifier {
     }
 
     public Classification classify(Hashtable<String,Integer> features) {
-        SortedSet<Classification> probabilites = this.categoryProbabilities(features);
+        SortedSet<Classification> probabilities = this.categoryProbabilities(features);
 
-        if (probabilites.size() > 0) {
-            return probabilites.last();
+        if (probabilities.size() > 0) {
+            return probabilities.last();
         }
         return null;
     }
