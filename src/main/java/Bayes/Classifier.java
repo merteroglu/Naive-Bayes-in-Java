@@ -33,16 +33,18 @@ public class Classifier {
         if (count == null) {
             features.put(feature, value);
             count = features.get(feature);
+        }else{
+            features.put(feature, count.intValue() + value);
         }
-
-        features.put(feature, count.intValue() + value);
 
         Integer totalCount = this.totalFeatureCount.get(feature);
         if (totalCount == null) {
             this.totalFeatureCount.put(feature, value);
             totalCount = this.totalFeatureCount.get(feature);
+        }else{
+            this.totalFeatureCount.put(feature, totalCount.intValue() + value);
         }
-        this.totalFeatureCount.put(feature, totalCount.intValue() + value);
+
     }
 
     public void incrementCategory(String category) {
