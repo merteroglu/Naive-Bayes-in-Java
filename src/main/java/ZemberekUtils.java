@@ -36,7 +36,7 @@ public class ZemberekUtils {
         List<String> stringList = new ArrayList<String>();
         for(String s : words){
             try{
-                stringList.add(turkishMorphology.analyze(s).get(0).getStems().get(0));
+                stringList.add(turkishMorphology.analyze(s).get(0).getLemmas().get(0));
             }catch (Exception e){
 
             }
