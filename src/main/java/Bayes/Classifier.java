@@ -55,19 +55,23 @@ public class Classifier {
     }
 
     public void removeLessThan50(){
+        List<String> topicList = new ArrayList<String>();
+        topicList.add("ekonomi");topicList.add("magazin");topicList.add("saglik");topicList.add("siyasi");topicList.add("spor");
         Map<String, Integer> table = (Map<String, Integer>) totalFeatureCount;
         Iterator<Map.Entry<String, Integer>> iterator = table.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, Integer> entry = iterator.next();
             if(entry.getValue() < 50){
+                for(String topic : topicList){
+                    featureCountPerCategory.get(topic).remove(entry.getKey());
+                }
+
                 iterator.remove();
             }
         }
 
-        List<String> topicList = new ArrayList<String>();
-        topicList.add("ekonomi");topicList.add("magazin");topicList.add("saglik");topicList.add("siyasi");topicList.add("spor");
 
-        for (String topic : topicList) {
+        /*for (String topic : topicList) {
             Map<String, Integer> table2 = (Map<String, Integer>) featureCountPerCategory.get(topic);
             Iterator<Map.Entry<String, Integer>> iterator2 = table2.entrySet().iterator();
             while(iterator2.hasNext()){
@@ -76,7 +80,7 @@ public class Classifier {
                     iterator2.remove();
                 }
             }
-        }
+        }*/
 
     }
 
@@ -123,8 +127,8 @@ public class Classifier {
     public void learn(String category, Hashtable<String,Integer> features) {
         for (String feature : features.keySet()){
             incrementFeature(feature,category,features.get(feature).intValue());
+            this.incrementCategory(category);
         }
-        this.incrementCategory(category);
     }
 
     private double featuresProbabilityProduct(Hashtable<String,Integer> features, String category) {

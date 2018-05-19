@@ -44,11 +44,12 @@ public class Main {
         frame.setVisible(true);
     }
 
-    public static void apendText(String text){
+    public static void appendText(String text){
         jTextArea.append(text+"\n");
     }
 
     public static void start(){
+        appendText("İşlemler Başlıyor ...");
         Helper helper = new Helper();
         List<DocFile> docFiles = helper.getAllDocFiles();
 
@@ -83,13 +84,13 @@ public class Main {
             if(!file.isLearning()){
                 if(file.getnGrams().getTableNGrams().size() > 0){
                     Classification c = bayes.classify(file.getnGrams().getTableNGrams());
-                    apendText(file.getName() + " Bilinen Kategori : " + file.getTopic() + " Bulunan Kategori : " + c.getCategory()
-                            + " Olasılık : " + c.getProbability());
+                    appendText(file.getName() + " | Bilinen Kategori : " + file.getTopic() + " | Bulunan Kategori : " + c.getCategory()
+                            + " | Olasılık : " + c.getProbability());
                     Integer count = statistics.get(file.getTopic()).get(c.getCategory());
                     if(count == null){
                         statistics.get(file.getTopic()).put(c.getCategory(),1);
                     }else{
-                        statistics.get(file.getTopic()).put(c.getCategory(),count.intValue() + 1);
+                        statistics.get(file.getTopic()).put(c.getCategory(),++count);
                     }
                 }
             }
@@ -100,35 +101,40 @@ public class Main {
         ekonomi.setTN(statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         ekonomi.setFP(statistics.get("magazin").get("ekonomi").intValue() + statistics.get("saglik").get("ekonomi").intValue() + statistics.get("siyasi").get("ekonomi").intValue() + statistics.get("spor").get("ekonomi").intValue() );
         ekonomi.setFN(statistics.get("ekonomi").get("magazin").intValue() + statistics.get("ekonomi").get("saglik").intValue() + statistics.get("ekonomi").get("siyasi").intValue() + statistics.get("ekonomi").get("spor").intValue());
-        apendText("Ekonomi " + ekonomi.toString());
+        appendText("Ekonomi Test Verisi toplamı =" + (ekonomi.getTP() + ekonomi.getFN()) + " Ekonomi olarak bulunan =" + ekonomi.getTP());
+        appendText("Ekonomi " + ekonomi.toString());
 
         Statistics magazin = new Statistics();
         magazin.setTP(statistics.get("magazin").get("magazin").intValue());
         magazin.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         magazin.setFP(statistics.get("ekonomi").get("magazin").intValue() + statistics.get("saglik").get("magazin").intValue() + statistics.get("siyasi").get("magazin").intValue() + statistics.get("spor").get("magazin").intValue() );
         magazin.setFN(statistics.get("magazin").get("ekonomi").intValue() + statistics.get("magazin").get("saglik").intValue() + statistics.get("magazin").get("siyasi").intValue() + statistics.get("magazin").get("spor").intValue());
-        apendText("Magazin " + magazin.toString());
+        appendText("Magazin Test Verisi toplamı =" + (magazin.getTP() + magazin.getFN()) + " Magazin olarak bulunan =" + magazin.getTP());
+        appendText("Magazin " + magazin.toString());
 
         Statistics saglik = new Statistics();
         saglik.setTP(statistics.get("saglik").get("saglik").intValue());
         saglik.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         saglik.setFP(statistics.get("ekonomi").get("saglik").intValue() + statistics.get("magazin").get("saglik").intValue() + statistics.get("siyasi").get("saglik").intValue() + statistics.get("spor").get("saglik").intValue() );
         saglik.setFN(statistics.get("saglik").get("ekonomi").intValue() + statistics.get("saglik").get("magazin").intValue() + statistics.get("saglik").get("siyasi").intValue() + statistics.get("saglik").get("spor").intValue());
-        apendText("Saglik " + saglik.toString());
+        appendText("Saglik Test Verisi toplamı =" + (saglik.getTP() + saglik.getFN()) + " Saglik olarak bulunan =" + saglik.getTP());
+        appendText("Saglik " + saglik.toString());
 
         Statistics siyasi = new Statistics();
         siyasi.setTP(statistics.get("siyasi").get("siyasi").intValue());
         siyasi.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("spor").get("spor").intValue());
         siyasi.setFP(statistics.get("ekonomi").get("siyasi").intValue() + statistics.get("magazin").get("siyasi").intValue() + statistics.get("saglik").get("siyasi").intValue() + statistics.get("spor").get("siyasi").intValue() );
         siyasi.setFN(statistics.get("siyasi").get("ekonomi").intValue() + statistics.get("siyasi").get("magazin").intValue() + statistics.get("siyasi").get("saglik").intValue() + statistics.get("siyasi").get("spor").intValue());
-        apendText("Siyasi " + siyasi.toString());
+        appendText("Siyasi Test Verisi toplamı =" + (siyasi.getTP() + siyasi.getFN()) + " Siyasi olarak bulunan =" + siyasi.getTP());
+        appendText("Siyasi " + siyasi.toString());
 
         Statistics spor = new Statistics();
         spor.setTP(statistics.get("spor").get("spor").intValue());
         spor.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue());
         spor.setFP(statistics.get("ekonomi").get("spor").intValue() + statistics.get("magazin").get("spor").intValue() + statistics.get("saglik").get("spor").intValue() + statistics.get("siyasi").get("spor").intValue() );
         spor.setFN(statistics.get("spor").get("ekonomi").intValue() + statistics.get("spor").get("magazin").intValue() + statistics.get("spor").get("saglik").intValue() + statistics.get("spor").get("siyasi").intValue());
-        apendText("Spor " + spor.toString());
+        appendText("Spor Test Verisi toplamı =" + (spor.getTP() + spor.getFN()) + " Spor olarak bulunan =" + spor.getTP());
+        appendText("Spor " + spor.toString());
     }
 
 }
