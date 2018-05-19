@@ -16,17 +16,17 @@ public class Classifier {
 
     public int getCategoriesTotal() {
         int toReturn = 0;
-        for (Enumeration<Integer> e = this.totalCategoryCount.elements(); e.hasMoreElements();) {
+        for (Enumeration<Integer> e = totalCategoryCount.elements(); e.hasMoreElements();) {
             toReturn += e.nextElement();
         }
         return toReturn;
     }
 
     public void incrementFeature(String feature,String category,int value){
-        Dictionary<String, Integer> features = this.featureCountPerCategory.get(category);
+        Dictionary<String, Integer> features = featureCountPerCategory.get(category);
         if (features == null) {
-            this.featureCountPerCategory.put(category, new Hashtable<>());
-            features = this.featureCountPerCategory.get(category);
+            featureCountPerCategory.put(category, new Hashtable<>());
+            features = featureCountPerCategory.get(category);
         }
 
         Integer count = features.get(feature);
@@ -36,21 +36,21 @@ public class Classifier {
             features.put(feature, count.intValue() + value);
         }
 
-        Integer totalCount = this.totalFeatureCount.get(feature);
+        Integer totalCount = totalFeatureCount.get(feature);
         if (totalCount == null) {
-            this.totalFeatureCount.put(feature, value);
+            totalFeatureCount.put(feature, value);
         }else{
-            this.totalFeatureCount.put(feature, totalCount.intValue() + value);
+            totalFeatureCount.put(feature, totalCount.intValue() + value);
         }
 
     }
 
     public void incrementCategory(String category) {
-        Integer count = this.totalCategoryCount.get(category);
+        Integer count = totalCategoryCount.get(category);
         if (count == null) {
-            this.totalCategoryCount.put(category, 1);
+            totalCategoryCount.put(category, 1);
         }else{
-            this.totalCategoryCount.put(category, ++count);
+            totalCategoryCount.put(category, ++count);
         }
     }
 
@@ -65,43 +65,29 @@ public class Classifier {
                 for(String topic : topicList){
                     featureCountPerCategory.get(topic).remove(entry.getKey());
                 }
-
                 iterator.remove();
             }
         }
-
-
-        /*for (String topic : topicList) {
-            Map<String, Integer> table2 = (Map<String, Integer>) featureCountPerCategory.get(topic);
-            Iterator<Map.Entry<String, Integer>> iterator2 = table2.entrySet().iterator();
-            while(iterator2.hasNext()){
-                Map.Entry<String, Integer> entry = iterator2.next();
-                if(entry.getValue() < 50){
-                    iterator2.remove();
-                }
-            }
-        }*/
-
     }
 
     public int getFeatureCount(String feature, String category) {
-        Dictionary<String, Integer> features = this.featureCountPerCategory.get(category);
+        Dictionary<String, Integer> features = featureCountPerCategory.get(category);
         if (features == null) return 0;
         Integer count = features.get(feature);
         return (count == null) ? 0 : count.intValue();
     }
 
     public int getFeatureCount(String feature) {
-        Integer count = this.totalFeatureCount.get(feature);
+        Integer count = totalFeatureCount.get(feature);
         return (count == null) ? 0 : count.intValue();
     }
 
     public Set<String> getCategories() {
-        return ((Hashtable<String, Integer>) this.totalCategoryCount).keySet();
+        return ((Hashtable<String, Integer>) totalCategoryCount).keySet();
     }
 
     public int getCategoryCount(String category) {
-        Integer count = this.totalCategoryCount.get(category);
+        Integer count = totalCategoryCount.get(category);
         return (count == null) ? 0 : count.intValue();
     }
 
@@ -111,14 +97,14 @@ public class Classifier {
         if (totalFeatureCount == 0) {
             return 0;
         } else {
-            return (double)this.getFeatureCount(feature, category) / (double) this.getFeatureCount(feature);
+            return (double) getFeatureCount(feature, category) / (double) getFeatureCount(feature);
         }
     }
 
     public double featureWeighedAverage(String feature, String category) {
         final double basicProbability = featureProbability(feature, category);
 
-        Integer totals = this.totalFeatureCount.get(feature);
+        Integer totals = totalFeatureCount.get(feature);
         if (totals == null) totals = 0;
 
         return (1+(totals * basicProbability)) / (1+totals);
@@ -127,7 +113,7 @@ public class Classifier {
     public void learn(String category, Hashtable<String,Integer> features) {
         for (String feature : features.keySet()){
             incrementFeature(feature,category,features.get(feature).intValue());
-            this.incrementCategory(category);
+            incrementCategory(category);
         }
     }
 
@@ -135,14 +121,14 @@ public class Classifier {
         double product = 0.0f;
         for (String feature : features.keySet()){
             for (int i = 0; i < features.get(feature).intValue(); i++) {
-                product += Math.log( this.featureWeighedAverage(feature, category));
+                product += Math.log(featureWeighedAverage(feature, category));
             }
         }
         return product;
     }
 
     private double categoryProbability(Hashtable<String,Integer> features, String category) {
-        return ((double) this.getCategoryCount(category) / (double) this.getCategoriesTotal())
+        return ((double) getCategoryCount(category) / (double) getCategoriesTotal())
                 * featuresProbabilityProduct(features, category);
     }
 
@@ -159,14 +145,14 @@ public class Classifier {
                             }
                         });
 
-        for (String category : this.getCategories())
-            probabilities.add(new Classification(category, this.categoryProbability(features, category)));
+        for (String category : getCategories())
+            probabilities.add(new Classification(category, categoryProbability(features, category)));
 
         return probabilities;
     }
 
     public Classification classify(Hashtable<String,Integer> features) {
-        SortedSet<Classification> probabilities = this.categoryProbabilities(features);
+        SortedSet<Classification> probabilities = categoryProbabilities(features);
 
         if (probabilities.size() > 0) {
             return probabilities.last();
