@@ -117,7 +117,7 @@ public class Classifier {
         Integer totals = this.totalFeatureCount.get(feature);
         if (totals == null) totals = 0;
 
-        return (totals * basicProbability) / totals;
+        return (1+(totals * basicProbability)) / (1+totals);
     }
 
     public void learn(String category, Hashtable<String,Integer> features) {

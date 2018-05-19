@@ -148,7 +148,7 @@ public class Helper {
                 DocFile docFile = new DocFile(f.getName(),getTopicName(i),mergedWordsInF,false);
                 docFiles.add(docFile);
             }
-            System.out.println(getTopicName(i) + " Tamamlandı");
+            Main.apendText(getTopicName(i) + " Tamamlandı");
         }
         return docFiles;
     }

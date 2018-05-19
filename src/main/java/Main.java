@@ -1,14 +1,54 @@
 import Bayes.Classification;
 import Bayes.Classifier;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
 public class Main {
 
+    public static JTextArea jTextArea = new JTextArea("");
 
     public static void main(String[] args) {
+        createForm();
+    }
+
+    public static void createForm(){
+        JFrame frame = new JFrame("Naive Bayes");
+        JButton btnStart = new JButton("Start");
+        btnStart.setBounds(50,10,700,30);
+
+        btnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        start();
+                    }
+                });
+                thread.start();
+            }
+        });
+
+        JScrollPane scrollText = new JScrollPane(jTextArea);
+        scrollText.setBounds(10,45,780,500);
+        frame.add(btnStart);
+        frame.add(scrollText);
+        frame.setSize(800,600);
+        frame.setLayout(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
+    public static void apendText(String text){
+        jTextArea.append(text+"\n");
+    }
+
+    public static void start(){
         Helper helper = new Helper();
         List<DocFile> docFiles = helper.getAllDocFiles();
 
@@ -17,7 +57,7 @@ public class Main {
         for(DocFile file : docFiles){
             if(file.isLearning()){
                 if(file.getnGrams().getTableNGrams().size() > 0)
-                bayes.learn(file.getTopic(),file.getnGrams().getTableNGrams());
+                    bayes.learn(file.getTopic(),file.getnGrams().getTableNGrams());
             }
         }
 
@@ -42,15 +82,15 @@ public class Main {
         for(DocFile file : docFiles){
             if(!file.isLearning()){
                 if(file.getnGrams().getTableNGrams().size() > 0){
-                   Classification c = bayes.classify(file.getnGrams().getTableNGrams());
-                    System.out.println(file.getName() + " Bilinen Kategori : " + file.getTopic() + " Bulunan Kategori : " + c.getCategory()
-                    + " Olasılık : " + c.getProbability());
-                   Integer count = statistics.get(file.getTopic()).get(c.getCategory());
-                   if(count == null){
-                       statistics.get(file.getTopic()).put(c.getCategory(),1);
-                   }else{
-                       statistics.get(file.getTopic()).put(c.getCategory(),count.intValue() + 1);
-                   }
+                    Classification c = bayes.classify(file.getnGrams().getTableNGrams());
+                    apendText(file.getName() + " Bilinen Kategori : " + file.getTopic() + " Bulunan Kategori : " + c.getCategory()
+                            + " Olasılık : " + c.getProbability());
+                    Integer count = statistics.get(file.getTopic()).get(c.getCategory());
+                    if(count == null){
+                        statistics.get(file.getTopic()).put(c.getCategory(),1);
+                    }else{
+                        statistics.get(file.getTopic()).put(c.getCategory(),count.intValue() + 1);
+                    }
                 }
             }
         }
@@ -60,36 +100,35 @@ public class Main {
         ekonomi.setTN(statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         ekonomi.setFP(statistics.get("magazin").get("ekonomi").intValue() + statistics.get("saglik").get("ekonomi").intValue() + statistics.get("siyasi").get("ekonomi").intValue() + statistics.get("spor").get("ekonomi").intValue() );
         ekonomi.setFN(statistics.get("ekonomi").get("magazin").intValue() + statistics.get("ekonomi").get("saglik").intValue() + statistics.get("ekonomi").get("siyasi").intValue() + statistics.get("ekonomi").get("spor").intValue());
-        System.out.println("Ekonomi " + ekonomi.toString());
+        apendText("Ekonomi " + ekonomi.toString());
 
         Statistics magazin = new Statistics();
         magazin.setTP(statistics.get("magazin").get("magazin").intValue());
         magazin.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         magazin.setFP(statistics.get("ekonomi").get("magazin").intValue() + statistics.get("saglik").get("magazin").intValue() + statistics.get("siyasi").get("magazin").intValue() + statistics.get("spor").get("magazin").intValue() );
         magazin.setFN(statistics.get("magazin").get("ekonomi").intValue() + statistics.get("magazin").get("saglik").intValue() + statistics.get("magazin").get("siyasi").intValue() + statistics.get("magazin").get("spor").intValue());
-        System.out.println("Magazin " + magazin.toString());
+        apendText("Magazin " + magazin.toString());
 
         Statistics saglik = new Statistics();
         saglik.setTP(statistics.get("saglik").get("saglik").intValue());
         saglik.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("siyasi").get("siyasi").intValue() + statistics.get("spor").get("spor").intValue());
         saglik.setFP(statistics.get("ekonomi").get("saglik").intValue() + statistics.get("magazin").get("saglik").intValue() + statistics.get("siyasi").get("saglik").intValue() + statistics.get("spor").get("saglik").intValue() );
         saglik.setFN(statistics.get("saglik").get("ekonomi").intValue() + statistics.get("saglik").get("magazin").intValue() + statistics.get("saglik").get("siyasi").intValue() + statistics.get("saglik").get("spor").intValue());
-        System.out.println("Saglik " + saglik.toString());
+        apendText("Saglik " + saglik.toString());
 
         Statistics siyasi = new Statistics();
         siyasi.setTP(statistics.get("siyasi").get("siyasi").intValue());
         siyasi.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("spor").get("spor").intValue());
         siyasi.setFP(statistics.get("ekonomi").get("siyasi").intValue() + statistics.get("magazin").get("siyasi").intValue() + statistics.get("saglik").get("siyasi").intValue() + statistics.get("spor").get("siyasi").intValue() );
         siyasi.setFN(statistics.get("siyasi").get("ekonomi").intValue() + statistics.get("siyasi").get("magazin").intValue() + statistics.get("siyasi").get("saglik").intValue() + statistics.get("siyasi").get("spor").intValue());
-        System.out.println("Siyasi " + siyasi.toString());
+        apendText("Siyasi " + siyasi.toString());
 
         Statistics spor = new Statistics();
         spor.setTP(statistics.get("spor").get("spor").intValue());
         spor.setTN(statistics.get("ekonomi").get("ekonomi").intValue() + statistics.get("magazin").get("magazin").intValue() + statistics.get("saglik").get("saglik").intValue() + statistics.get("siyasi").get("siyasi").intValue());
         spor.setFP(statistics.get("ekonomi").get("spor").intValue() + statistics.get("magazin").get("spor").intValue() + statistics.get("saglik").get("spor").intValue() + statistics.get("siyasi").get("spor").intValue() );
         spor.setFN(statistics.get("spor").get("ekonomi").intValue() + statistics.get("spor").get("magazin").intValue() + statistics.get("spor").get("saglik").intValue() + statistics.get("spor").get("siyasi").intValue());
-        System.out.println("Spor " + spor.toString());
-
+        apendText("Spor " + spor.toString());
     }
 
 }
