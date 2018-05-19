@@ -122,7 +122,6 @@ public class Helper {
         return mergedString;
     }
 
-
     public List<DocFile> getAllDocFiles(){
         List<DocFile> docFiles = new ArrayList<>();
         ZemberekUtils zemberekUtils = new ZemberekUtils();

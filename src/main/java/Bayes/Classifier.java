@@ -32,7 +32,6 @@ public class Classifier {
         Integer count = features.get(feature);
         if (count == null) {
             features.put(feature, value);
-            count = features.get(feature);
         }else{
             features.put(feature, count.intValue() + value);
         }
@@ -40,7 +39,6 @@ public class Classifier {
         Integer totalCount = this.totalFeatureCount.get(feature);
         if (totalCount == null) {
             this.totalFeatureCount.put(feature, value);
-            totalCount = this.totalFeatureCount.get(feature);
         }else{
             this.totalFeatureCount.put(feature, totalCount.intValue() + value);
         }
@@ -50,10 +48,10 @@ public class Classifier {
     public void incrementCategory(String category) {
         Integer count = this.totalCategoryCount.get(category);
         if (count == null) {
-            this.totalCategoryCount.put(category, 0);
-            count = this.totalCategoryCount.get(category);
+            this.totalCategoryCount.put(category, 1);
+        }else{
+            this.totalCategoryCount.put(category, ++count);
         }
-        this.totalCategoryCount.put(category, ++count);
     }
 
     public void removeLessThan50(){
@@ -109,18 +107,17 @@ public class Classifier {
         if (totalFeatureCount == 0) {
             return 0;
         } else {
-            return this.getFeatureCount(feature, category) / (double) this.getFeatureCount(feature);
+            return (double)this.getFeatureCount(feature, category) / (double) this.getFeatureCount(feature);
         }
     }
 
     public double featureWeighedAverage(String feature, String category) {
-        double weight = 1.0f;
-        double assumedProbability = 0.5f;
         final double basicProbability = featureProbability(feature, category);
 
         Integer totals = this.totalFeatureCount.get(feature);
         if (totals == null) totals = 0;
-        return ((weight * assumedProbability) + (totals * basicProbability)) / (weight + totals);
+
+        return (totals * basicProbability) / totals;
     }
 
     public void learn(String category, Hashtable<String,Integer> features) {
@@ -131,7 +128,7 @@ public class Classifier {
     }
 
     private double featuresProbabilityProduct(Hashtable<String,Integer> features, String category) {
-        double product = 1.0f;
+        double product = 0.0f;
         for (String feature : features.keySet()){
             for (int i = 0; i < features.get(feature).intValue(); i++) {
                 product += Math.log( this.featureWeighedAverage(feature, category));
@@ -150,7 +147,6 @@ public class Classifier {
         SortedSet<Classification> probabilities =
                 new TreeSet<Classification>(
                         new Comparator<Classification>() {
-
                             public int compare(Classification o1, Classification o2) {
                                 int toReturn = Double.compare(o1.getProbability(), o2.getProbability());
                                 if ((toReturn == 0) && !o1.getCategory().equals(o2.getCategory()))
@@ -161,6 +157,7 @@ public class Classifier {
 
         for (String category : this.getCategories())
             probabilities.add(new Classification(category, this.categoryProbability(features, category)));
+
         return probabilities;
     }
 
