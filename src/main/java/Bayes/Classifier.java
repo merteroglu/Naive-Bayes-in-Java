@@ -101,7 +101,7 @@ public class Classifier {
         }
     }
 
-    public double featureWeighedAverage(String feature, String category) {
+    public double featureAverage(String feature, String category) {
         final double basicProbability = featureProbability(feature, category);
 
         Integer totals = totalFeatureCount.get(feature);
@@ -117,17 +117,17 @@ public class Classifier {
         }
     }
 
-    private double featuresProbabilityProduct(Hashtable<String,Integer> features, String category) {
+    private double featuresProbabilitySum(Hashtable<String,Integer> features, String category) {
         double product = 0.0f;
         for (String feature : features.keySet()){
-            product += (features.get(feature).intValue() * Math.log(featureWeighedAverage(feature, category)));
+            product += (features.get(feature).intValue() * Math.log(featureAverage(feature, category)));
         }
         return product;
     }
 
     private double categoryProbability(Hashtable<String,Integer> features, String category) {
         return ((double) getCategoryCount(category) / (double) getCategoriesTotal())
-                * featuresProbabilityProduct(features, category);
+                * featuresProbabilitySum(features, category);
     }
 
     private SortedSet<Classification> categoryProbabilities(Hashtable<String,Integer> features) {
