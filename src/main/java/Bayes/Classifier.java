@@ -120,9 +120,7 @@ public class Classifier {
     private double featuresProbabilityProduct(Hashtable<String,Integer> features, String category) {
         double product = 0.0f;
         for (String feature : features.keySet()){
-            for (int i = 0; i < features.get(feature).intValue(); i++) {
-                product += Math.log(featureWeighedAverage(feature, category));
-            }
+            product += (features.get(feature).intValue() * Math.log(featureWeighedAverage(feature, category)));
         }
         return product;
     }
