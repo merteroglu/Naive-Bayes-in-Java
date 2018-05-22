@@ -1,0 +1,15 @@
+Tekerlekli sandalyeye düþünce gücüyle kumanda edilebilecek 
+
+Tekerlekli sandalyeye mahkum olan felçliler, gelecekte sandalyelerini düþünce güçleriyle kumanda edebilecekler. 
+
+New Scientist dergisinde yayýmlanan habere göre, Ýspanyol ve Ýsviçreli bilim adamlarýndan oluþan bir ekip, düþünce gücüyle hareket eden bir robot geliþtirdiler. 
+Geliþtirilen sistem, ileride tekerlekli sandalyelere uyarlanacak. Yeni sistemde, beyin implantlarýna gerek olmadýðýný belirten bilim adamlarý, felçli kiþinin beyin akýmlarýnýn, elektrotlar içeren bir baþlýk vasýtasýyla, kafatasýnýn üzerinden okunacaðýný kaydettiler. Haberde, kollarý ve bacaklarý felçli kiþilerin, mevcut tekerlekli sandalyeleri, çeneleriyle joystick kullanarak hareket ettirebildikleri, fakat bu yöntemin çok yorucu olduðu belirtildi. 
+
+Þimdiye kadar gelinen aþamada, sistemin ileri, sað ve sol olmak üzere üç komutu anladýðýný söyleyen bilim adamlarý, robotu kontrol edebilmek için 2 günlük bir eðitimin yeterli olduðunu kaydettiler. 
+
+Tekerlekli sandalyenin duvar gibi engellere çarpmamasý için robota ''suni zeka'' yerleþtirildiðini ifade eden bilim adamlarý, robotun aldýðý komutlarý çevresine uygun olduðu takdirde yerine getirdiðini belirttiler. 
+
+Bu durumda, ''sol'' komutunu alan robot, ilk fýrsatta sola dönüyor. 
+
+
+

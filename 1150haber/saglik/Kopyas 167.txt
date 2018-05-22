@@ -1,0 +1,7 @@
+SSK Kayseri Hastanesi' nde Ýnternetten Randevu 
+
+Kayseri'de SSK Hastanesi Çözüm Ýnternetten Randevu Program'ýyla çaðýn gerektirdiði yeniliklere bir yenisini daha ekledi. 
+
+(Habersaglýk-Istanbul) Çözüm Bilgisayar tarafýndan hazýrlanmýþ olan Ýnternetten Randevu Programý’nda; mernis no, sicil numarasý, istenilen gün ve saate göre randevu alabilme, hastanenin çalýþma þekline göre Cumartesi günü randevulu çalýþabilme, polikliniklerin doktor isimleriyle birlikte seçilmesi, günlük randevu kapasitesi ve randevu sayýlarýný görebilme, randevu iþlemlerinin yazýcý çýktýsý olarak alýnmasý, istatistiklerinin hesaplanmasý, randevu iþleminin iptal edilmesi, tatil gününe rastlayan randevularýn ilk mesai gününe alýnmasý, randevu bilgilerinin hastanýn e-mail adresine veya cep telefonuna kýsa mesaj olarak gönderilmesi, gönüllü çalýþma sistemine uygunluk gibi temel unsurlarýn yanýnda çok sayýda özelleþtirilebilinecek seçenekler bulunuyor.
+SSK Ereðli Hastanesi ve Türk Telekom AÞ. Genel Müdürlüðü'nden sonra SSK Kayseri Hastanesi'nde de hizmete giren Çözüm Ýnternetten Randevu Programý tüm Çözüm programlarýyla entegre çalýþýyor.
+

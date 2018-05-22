@@ -1,0 +1,19 @@
+MR'da renkli dönem 
+
+Hastalýklarýn teþhisinde son yýllarda gittikçe daha çok kullanýlan ''Manyetik Rezonans''(MR) yöntemi, Yýldýz Teknik Üniversitesi Öðretim Üyesi... 
+
+Hastalýklarýn teþhisinde son yýllarda gittikçe daha çok kullanýlan “Manyetik Rezonans” (MR) yöntemi, Yýldýz Teknik Üniversitesi Öðretim Üyesi Yard. Doç. Dr. Bülent Bayram’ýn geliþtirdiði teknikle renkli hale getirildi.
+Yýldýz Teknik Üniversitesi öðretim üyeleri Prof. Dr. Nevzat Gürmen ve Doç. Dr. Zübeyde Alkýþ’ýn katkýlarýyla geliþtirdiði yöntem hakkýnda bilgi veren Yard. Doç. Dr. Bayram, iç organlar ile fonksiyonlarýnýn görüntülenmesi için kullanýlan MR tekniðinin dünyada þimdiye kadar siyah-beyaz görüntülerle uygulandýðýný anlattý. 
+
+Yard. Doç. Dr. Bayram, 1994 yýlýnda doktora çalýþmasý için gittiði Almanya’daki radyolog arkadaþýnýn bir çocuðun beyin MR’ýnýn filmini incelemesini istediðini belirterek, þöyle konuþtu: “Radyolog arkadaþým, filmde bir tümör olduðunu, ancak profesörünün bu tümörü göremediðini söylüyordu. Ben uzaktan algýlama ve uydu görüntüleriyle uðraþýyorum. Ona, ‘biz uydu verilerinden daðlarý, ovalarý, aðaçlarý, sularý ayýrabiliyoruz. Beyin anatomisi konusunda bana biraz bilgi verebilirsen bunu da herhalde ayýrabiliriz’ dedim. Gerçekten de tümörü bulduk ve o çocuk da ameliyat olarak kurtuldu. MR filmlerine ilgim bu olayla baþladý.” 
+
+Türkiye’ye döndükten sonra MR cihazlarý ve tekniði üzerinde araþtýrma yaptýðýný, MR filmlerinin nasýl oluþtuðunu incelediðini ifade eden Yard. Doç. Dr. Bayram, araþtýrmasýnda bu iþin çok daha hýzlý ve farklý bir biçimde yapýlabileceðini fark ettiðini kaydetti. 
+
+Dünyada henüz bir çalýþmanýn yapýlmadýðý bu konu üzerinde yaklaþýk 5 yýl önce Prof. Dr. Gürmen ve Doç. Dr. Alkýþ’la birlikte çalýþmaya baþladýklarýný anlatan Yard. Doç. Dr. Bayram, sözlerini þöyle sürdürdü: “Biz mühendis olarak görüntü iþleme yöntemleriyle MR filmlerini renklendiriyoruz. Bu amaçla bir bilgisayar yazýlýmý geliþtirdik. MR filmini cihazla tarýyorsunuz. Doðrudan dijital görüntü üreten MR cihazlarý da var. Ama biz onlarla deðil, film üzerinde çalýþtýk. Filmi bilgisayara veriyorsunuz, kýsa bir süre sonra renklendirilmiþ MR’ý elde ediyorsunuz. Buradaki yöntem, MR’ýn farklý fazlarda üretilebilmesine dayanýyor. Yani farklý manyetizmalarda görüntüde oluþan bilgi farklýlaþýyor. Bu farklý bilgileri biraraya getirerek, tek anlamlý bir bilgi, yani renkli MR’ý üretiyoruz. Bunu, tamamen sayýsal görüntü iþleme yöntemleriyle gerçekleþtiriyoruz. MR filmlerinin bilgisayar tarafýndan tamamen otomatik olarak renklendirildiði bu yöntemin, insan gözünün yanýlmasýný zorlaþtýrarak rahatsýzlýklarýn daha kolay tespit edilmesini saðlayacaðýný düþünüyoruz. Çünkü renkli görüntüde daha fazla bilgi var.” 
+
+DPT’NÝN DESTEÐÝ VE PATENT
+
+Yard. Doç. Dr. Bayram, Devlet Planlama Teþkilatý’nýn desteðiyle geliþtirilen yöntem için Türk Patent Enstitüsü’nden 10 yýllýk patent aldýklarýný dile getirdi. Yöntemin hayata geçirilmesi amacýyla týbbi bir çalýþma gerçekleþtirmeyi planladýklarýný da anlatan Yard. Doç. Dr. Bayram, bunun için tanýsý zor 100 vakayý ele alarak, “renkli MR’ýn tanýyý kolaylaþtýrýp kolaylaþtýrmadýðýnýn” araþtýrmasýný yapacaklarýný bildirdi. Çalýþmalarýnýn sonraki aþamasýnýn ise “taný veri tabaný” oluþturmak olduðunu vurgulayan Yard. Doç. Dr. Bayram, MR filmi üzerinde bilgisayarda tanýyý koyduktan sonra “hangi tür tümör veya vaka” olduðunu gösterecek bir sistem geliþtireceklerini kaydetti. 
+
+“Çalýþmamýzýn üçüncü aþamasý da verileri deðerlendirmeyi insana býrakmadan, MR’da görülen anomalileri yüzde 80-90 doðrulukta bilgisayarýn tespit etmesini saðlayacak bir sistem kurmak” diyen Yard. Doç. Dr. Bayram, yöntemle ilgili hazýrladýðý makalenin de yakýnda uluslararasý bir bilim dergisinde yayýnlanacaðýný sözlerine ekledi. 
+

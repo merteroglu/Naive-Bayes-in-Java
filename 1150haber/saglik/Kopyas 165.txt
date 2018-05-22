@@ -1,0 +1,13 @@
+Ýþaret dilini simültane tercüme edecek eldiven 
+
+Avustralya'daki bir üniversitede, saðýr ve dilsizlerin kullandýðý iþaret dilini bu dili bilmeyenlere simültane tercüme edecek bir eldiven geliþtiriliyor. 
+
+Avustralya'daki University of New South Wales araþtýrmacýlarýndan Velid Kadus'un üzerinde çalýþtýðý projede, iþaret dilini kullanan kiþinin giydiði bir eldiven, iþaretlenen kelimeleri baðlý olduðu bilgisayar ekranýnda görünecek þekilde yazýlý Ýngilizce'ye dönüþtürüyor. 
+Kadus, son denemede sistemin Avustralya'da kullanýlan iþaret dilini yüzde 95 doðrulukla çevirmeyi baþardýðýný belirtti. 
+
+Ancak programýn aþmasý gereken önemli zorluklar var. 
+
+Ýlk olarak, iþaret dili normal dildeki tipik bir cümle içindeki her kelimeyi kullanmýyor. Öte yandan, iþaret dilindeki her iþaret, hemen hemen normal dildeki iki kelimenin yerine geçerken, herkes, bu iþaretleri, aþaðý yukarý ayný olmakla birlikte, kendi tarzý içinde yapýyor. 
+
+
+

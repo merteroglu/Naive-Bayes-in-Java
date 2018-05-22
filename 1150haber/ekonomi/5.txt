@@ -1,0 +1,20 @@
+ÝSTANBUL - Hýzla geliþen teknoloji, tüketicilerin hayatýný kolaylaþtýracak ürünlerin çeþitliliði de artýyor. Teknoloji yatýrýmlarýnýn çoðunluðunu internet bankacýlýðý ve güvenliðe ayýran bankalar elektronik imza uygulamasýnýn hayata geçmesini bekliyor. 
+Ýnternet Bankacýlýðýnda yapýlan bazý baþvurularda kullanýcýlarýn þubeye giderek imza atmasý gerektiðine dikkat çeken Garanti Bankasý Þubesiz Bankacýlýk Birim Müdürü Burak Ali Göçer "Elektronik imza hem müþterilerin hem de bizlerin heyecanla beklediði bir konu" dedi. Medyada sýkça gündeme gelen elektronik imza kanununun da bir güvenlik sertifikasý olduðunu belirten HSBC Bank yetkilileri ise "Elektronik imza, daha güvenli bir bankacýlýk ortamý yaratacaktýr" dedi. 
+Ýnternetten yapýlan iþlemlerin maliyetlerinin daha düþük olmasý da bu alana daha çok yatýrým yapýlmasýna yol açýyor. Ýnternetten yapýlan iþlemlerin maliyeti 0.01-0.2 dolar arasýnda deðiþirken þubelerdeki iþlem maliyetleri 2-4 dolar arasýnda deðiþiyor. 
+
+Birçok ülkeden daha iyi 
+Türkiye'de internet kullanýmýnýn düþük olmasýnýn, internet bankacýlýðýnýn kullanýmýnýn da düþük olmasýna yol açtýðýný belirten bankacýlar buna raðmen iþlem hacmi ve hizmet çeþitliliði açýsýndan Türkiye'nin, birçok geliþmiþ ülkeyi arkasýnda býraktýðýný belirtiyor. Akbank yetkilileri "Yurtdýþýnda internet þubeleri sadece para transferi, ödeme ve bakiye görüntüleme fonksiyonlarý sunarken Türkiye'de neredeyse tüm yatýrým iþlemleri, döviz iþlemleri ve okul ödemeleri gibi iþlemler de yapýlabiliyor" dedi. Dýþbank Genel Müdür Yardýmcýsý Taner Ayhan ise, AB'de yüzde 46 olan internet kullaným oranýnýn, Türkiye'de yüzde 7 olduðunu belirtti. Türkiye'de internet kullanýcýlarýnýn yüzde 30'unun bankacýlýktan yararlandýðýný söyleyen Ayhan, Avrupa'da yüzde 42 oranýnda olduðunu belirtti. 
+Burak Ali Göçer de, "Kýyaslanabilir bankacýlýk iþlemlerinin yüzde 43'ü internet bankacýlýðý aracýlýðýyla yapýlýyor. Yatýrým iþlemlerinin de yüzde 80-90'ý internet üzerinden yapýlýyor" dedi. 
+
+Yüzde 65 erkek 
+Edinilen verilere göre internet bankacýlýðýný genellikle eðitim seviyesi yüksek kiþiler kullanýyor. Serbest meslek sahiplerinin yaný sýra ofis çalýþanlarý da internet bankacýlýðýný sýk kullanýyor. Kullanýcýlarýn yüzde 65'i ise erkek. 
+
+Bakiye sorma ilk sýrada 
+Bankalardan alýnan bilgiye göre internet bankacýlýðýnda yapýlan iþlemlerin baþýnda hesap takibi ve bakiye sorma geliyor. Bu iþlemi ise para transferleri ve EFT takip ediyor. Yatýrým iþlemleri de en çok yapýlan iþlemler arasýnda. Taner Ayhan, geçen sene Dýþbank'ýn internet þubesinin 
+5 milyon kez týklandýðý, yapýlan iþlem hacminin 16 katrilyon liranýn üzerine çýktýðý bilgisini verdi. Ýþ Bankasý'nda ise günlük ortalama iþlem tutarý 2.5 milyar TL. Yapý Kredi Bankasý'nýn ise 400 binden fazla kullanýcýsý var. Akbank, 160 bin aktif kullanýcýsýnýn yaný sýra tüm Akkart sahiplerine hizmet verirken, HSBC ise aylýk 1 milyonu aþkýn iþlemle en çok kullanýlanlar arasýnda. 
+
+Þifrenizi kimseye söylemeyin 
+Ýnternet bankacýlýðýnda güvenlik iki aþamada saðlanýyor. Bankanýn þifre üreterek güvenli bir þekilde müþteriye ulaþtýrýrken, müþterinin de kendisine verilen þifreleri güvenli bir þekilde saklamasý durumunda problem yaþanmayacaðýný belirten yetkililer, bugüne kadar internet þubelerinin güvenliði ile ilgili herhangi bir þikâyet almadýklarýna da dikkat çekiyor. 
+Ýnternet bankacýlýðýnda standartlaþan 128 bit SSL güvenlik uygulamalarýyla kullanýcýyla banka arasýndaki veriler maksimum güvenlikle þifrelenerek gönderiliyor. Ayrýca, giriþte ve þifre iþlemlerinde kullanýlan sanal klavye ise , klavye hareketlerini okuyan programlara karþý ek önlem aracý olarak sunuluyor. 
+Bankalar internet bankacýlýðýna önemli ölçüde yatýrým yapýyor. Ýnternet bankacýlýðý alternatif kanallar arasýnda ATM'lerden sonra ikinci sýrada yer alýyor. Banka yetkilileri, internet bankacýlýðýna yapýlan toplam yatýrýmýn yüzde 80'inin güvenlik uygulamalarýný geliþtirme amacýyla kullanýldýðýný belirtti. 
+

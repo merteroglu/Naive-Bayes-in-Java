@@ -1,0 +1,18 @@
+Toronto'daki Hastanelerde VOIP Çözümler 
+
+Toronto’daki St.Michael’s ve Mount Sinai Hastaneleri, Nortel NetworksSuccession Kurumsal VoIP (Voice over IP - IP tabanlý ses iletimi)çözümlerini kullanarak... 
+
+Toronto’daki St.Michael’s ve Mount Sinai Hastaneleri, Nortel Networks Succession Kurumsal VoIP (Voice over IP - IP tabanlý ses iletimi) çözümlerini kullanarak büyüyen tesislerinin artan iletiþim gereksinimlerini karþýlamaya yönelik önemli adýmlar attý.
+Birleþik IP aðýna geçme aþamasýnda Nortel Networks, St. Michael’s hastanesinin mevcut teknolojisini ve donanýmýný desteklemesine yardýmcý oldu. Mount Sinai ise tamamen IP Succession çözümünü kullandý. VoIP gerçekleþtirme çalýþmalarýnda uygulanan farklý yöntemler Nortel Networks portföyünün gücünü, iþ gereksinimlerine göre müþterilere farklý kullaným seçenekleri sunabildiðini yeniden gösterdi.
+
+Nortel Networks, St. Michael’s hastanesinin iletiþim sistemini verimli, güvenilir ve esnek IP tabanlý aða dönüþtürdü. Baþka bir hastane ile birleþilmesi sonucu 1.300’den 2.700’e çýkan kullanýcý sayýsý desteklenerek hastanenin yerel ve geniþ alan aðlarýný yeniden yapýlandýrmasýna olanak tanýndý.
+
+Nortel Networks Meridian1 VoIP çözümü sayesinde, mevcut özellikler, ses servisleri ve donaným yatýrýmlarý korunarak St. Michael’s hastanesine konferans görüþme, otomatik tekrar arama ve seçmeli çaðrý yönlendirme gibi geliþmiþ ses servisleri fonksiyonlarý ve geniþ kapsamlý að özellikleri sundu. Meridian1 VoIP ile birlikte St. Michael, altý önemli uydu bölgesine CallPilot tümleþik mesajlaþma gibi geliþmiþ ses servislerini sunmak için Nortel Networks’ün Remote Office (Uzak Ofis) 9150 teknolojisini ve 120’den fazla Nortel Networks i2004 Internet telefonunu kullanýyor. 
+
+Mount Sinai Hastanesi ise, i2004 Internet telefonlarýný, Nortel Networks’ün Succession Kurumsal Çaðrý Sunucusu (CSE) 1000, Passport 8600 Yönlendirme Anahtarlarý ve Business Policy Switch’i kapsayan IP çözümünü seçti. Succession CSE 1000, çaðrý daðýtýmý ve baðlantý yönetimi gibi geliþmiþ ses servislerine yönelik sunucu tabanlý bir IP iletiþim sistemidir. Passport 8600, týbbi görüntüleme, teletýp ve video konferans gibi kritik uygulamalara yönelik Gigabit Ethernet performansý saðlar. Mount Sinai’nin 160 i2004 Internet telefonunun baðlantýsýný yapmak üzere kullanacaðý Business Policy Switch, saðlam ve güvenilir yerel alan að çözümü sunar.
+
+Kaynak: turk.internet.com 
+
+
+
+

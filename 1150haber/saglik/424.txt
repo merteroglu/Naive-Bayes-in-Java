@@ -1,0 +1,9 @@
+Akciðer kanserini tespit eden yazýlým geliþtirildi 
+
+Mitsubishi Uzay Yazýlým Þirketi, akciðer kanserini tespit edebilen bir yazýlým geliþtirdiklerini açýkladý. 
+
+800 akciðer hastasýna ait bilgilerin bulunduðu bir veri tabanýný kullanan yazýlýmýn, Kyusu Üniversitesi ile Japon Çevre Saðlýðý Üniversitesi tarafýndan ortaklaþa geliþtirildiði öðrenildi. 
+Yazýlým, 5 milimetre kadar küçük iþaretleri röntgen üzerinden okuyabiliyor. Eðer röntgenlerde herhangi bir bulgu tespit ederse, doktorlarýn daha yakýndan bakýp incelemesi ve kesin bir sonuca varmasý için bunu bir ok ile tam olarak iþaret ediyor. 
+
+
+

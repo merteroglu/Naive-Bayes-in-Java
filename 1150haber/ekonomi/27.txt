@@ -1,0 +1,5 @@
+Microsoft Service Pack 2 hazýr   
+Microsoft, uzun zamandýr beklenen Windows XP iþletim sisteminin ikinci güvenlik paketi Service Pack 2’nin hazýrlýklarýný tamamladý. 
+
+Yazýlýmdaki güvenlik boþluklarýna karþý koruyucu özellikler de içereceði belirtilen Service Pack 2, geçtiðimiz haftadan itibaren bilgisayar üretici firmalarýna sunulmaya baþlanýrken, bu hafta içinde de þirketin müþterileri olan büyük þirketlere gönderilecek. Kiþisel bilgisayar kullanýcýlar ise paketi internetten ücretsiz olarak indirebilecek. Þirketten yapýlan açýklamada, paketin Ýngilizce dýþýnda 25 dilde kullanýcýlara hizmet vereceði bildirildi. Ayrýca Microsoft’un Service Pack 2 ve diðer programlar için yaklaþýk bir milyar dolarlýk yatýrým yaptýðý, yeni iþletim sistemi ‘Longhorn’’un bir bölümünün de Pack 2’ye dahil edildiði kaydedildi. Windows XP piyasaya çýkmasýnýn ardýndan geçen 3 yýl içinde birçok defa virüs saldýrýlarýna uðramýþtý. Microsoft Baþkaný Bill Gates, Service Pack 2 ile tüketicileri gittikçe artan bu tür saldýrýlardan koruma yolunda önemli bir adým attýklarýný söyledi.  
+ 
